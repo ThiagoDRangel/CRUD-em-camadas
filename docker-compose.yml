@@ -4,6 +4,8 @@ services:
   node:
     container_name: api_slido
     image: node:16
+    cpus: 0.4
+    mem_limit: 6g
     working_dir: /app
     tty: true
     stdin_open: true
@@ -18,6 +20,8 @@ services:
   database:
     container_name: db_slido
     image: mysql:8.0.32
+    cpus: 0.4
+    mem_limit: 6g
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:
