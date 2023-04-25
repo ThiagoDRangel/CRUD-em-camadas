@@ -5,7 +5,7 @@ services:
     container_name: api_slido
     image: node:16
     cpus: 0.4
-    mem_limit: 6g
+    mem_limit: 5g
     working_dir: /app
     tty: true
     stdin_open: true
@@ -15,13 +15,18 @@ services:
       - 3001:3001
     environment:
       - PORT=3001
+      - MYSQL_HOST=database
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=slido_db
     depends_on:
       - database
   database:
     container_name: db_slido
     image: mysql:8.0.32
     cpus: 0.4
-    mem_limit: 6g
+    mem_limit: 5g
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:
