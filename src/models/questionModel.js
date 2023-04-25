@@ -20,8 +20,17 @@ const exclude = async (questionId) => {
   );
 };
 
+const isQuestionSimilar = async (question) => {
+  const [questions] = await connection.execute(
+    'SELECT * FROM questions WHERE replace(lcase(question), " ", "")',
+    [question],
+  );
+  return questions.length > 0;
+}
+
 module.exports = {
   getAll,
   create,
   exclude,
+  isQuestionSimilar,
 };

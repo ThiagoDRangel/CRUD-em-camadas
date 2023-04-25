@@ -1,4 +1,5 @@
-const isNumberAndInteger = (userId) => typeof userId !== 'number' || !Number.isInteger(userId);
+const isNumberAndInteger = (userId) => typeof userId
+  !== 'number' || !Number.isInteger(userId);
 
 const questionValidator = async (req, res, next) => {
   const question = req.body;
@@ -42,7 +43,6 @@ const userIdValidator = async (req, res, next) => {
   }
   next();
 }
-
 
 module.exports = {
   questionValidator,

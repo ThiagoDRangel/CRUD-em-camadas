@@ -8,7 +8,10 @@ const getAll = async (req, res) => {
 const create = async (req, res) => {
   const question = req.body;
   const result = await questionService.create(question);
-  return res.status(201).json(result);
+
+  if (result.type) return res.status(result.type).json(result.message);
+
+  return res.status(201).json(result.message);
 };
 
 const exclude = async (req, res) => {

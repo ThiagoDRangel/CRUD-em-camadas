@@ -1,4 +1,5 @@
 const questionModel = require('../models/questionModel');
+const userModel = require('../models/userModel');
 
 const getAll = async () => {
   const questions = await questionModel.getAll();
@@ -6,8 +7,28 @@ const getAll = async () => {
 };
 
 const create = async (question) => {
+  const user = await userModel.getById(question.userId);
+  if (!user) return {
+    type: 404,
+    message: 'user not found',
+  };
+
+  const questionWithoutSpace = question.question.replace(/\s/g, '');
+  const questionLowerCase = questionWithoutSpace.questionLowerCase();
+  const isQuestionSimilar = await questionModel.isQuestionSimilar(questionLowerCase);
+
+  if(isQuestionSimilar) {
+    return {
+      type: 422,
+      message: 'there is a similar question',
+    };
+  }
+
   const createdQuestion = await questionModel.create(question);
-  return createdQuestion;
+  return {
+    type: null,
+    message: createdQuestion,
+  };
 };
 
 const exclude = async (questionId) => {
