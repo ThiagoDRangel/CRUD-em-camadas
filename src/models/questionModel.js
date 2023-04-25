@@ -5,6 +5,15 @@ const getAll = async () => {
   return questions;
 };
 
+const create = async ({ question }) => {
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO questions (question) VALUES (?);',
+    [question],
+  );
+  return { id: insertId, question };
+};
+
 module.exports = {
   getAll,
+  create,
 };

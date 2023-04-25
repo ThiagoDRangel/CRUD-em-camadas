@@ -9,4 +9,6 @@ app.get('/', (req, res) => res.status(200).json());
 
 app.get('/questions', questionController.getAll);
 
+app.post('/questions', questionController.create);
+
 module.exports = app;

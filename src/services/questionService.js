@@ -5,6 +5,12 @@ const getAll = async () => {
   return questions;
 };
 
+const create = async (question) => {
+  const createdQuestion = await questionModel.create(question);
+  return createdQuestion;
+};
+
 module.exports = {
   getAll,
+  create,
 };
