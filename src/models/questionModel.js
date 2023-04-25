@@ -13,7 +13,15 @@ const create = async ({ question }) => {
   return { id: insertId, question };
 };
 
+const exclude = async (questionId) => {
+  await connection.execute(
+    'DELETE FROM questions WHERE id = ?;',
+    [questionId],
+  );
+};
+
 module.exports = {
   getAll,
   create,
+  exclude,
 };

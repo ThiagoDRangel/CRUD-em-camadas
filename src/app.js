@@ -11,4 +11,6 @@ app.get('/questions', questionController.getAll);
 
 app.post('/questions', questionController.create);
 
+app.delete('/questions/:questionId', questionController.exclude);
+
 module.exports = app;

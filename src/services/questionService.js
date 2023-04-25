@@ -10,7 +10,13 @@ const create = async (question) => {
   return createdQuestion;
 };
 
+const exclude = async (questionId) => {
+  const deletedQuestion = await questionModel.exclude(questionId);
+  return deletedQuestion;
+};
+
 module.exports = {
   getAll,
   create,
+  exclude,
 };

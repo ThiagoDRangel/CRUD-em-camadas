@@ -11,7 +11,14 @@ const create = async (req, res) => {
   return res.status(201).json(result);
 };
 
+const exclude = async (req, res) => {
+  const { questionId } = req.params;
+  await questionService.exclude(questionId);
+  return res.status(204).json();
+}
+
 module.exports = {
   getAll,
   create,
+  exclude,
 };
