@@ -1,9 +1,9 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const question = await connection.execute('SELECT * FROM questions;');
-  console.log(question);
-  return question;
+  const [questions] = await connection.execute('SELECT * FROM questions;');
+  console.log(questions);
+  return questions;
 };
 
 getAll();
