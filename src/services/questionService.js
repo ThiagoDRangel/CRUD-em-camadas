@@ -14,7 +14,7 @@ const create = async (question) => {
   };
 
   const questionWithoutSpace = question.question.replace(/\s/g, '');
-  const questionLowerCase = questionWithoutSpace.questionLowerCase();
+  const questionLowerCase = questionWithoutSpace.toLowerCase();
   const isQuestionSimilar = await questionModel.isQuestionSimilar(questionLowerCase);
 
   if(isQuestionSimilar) {

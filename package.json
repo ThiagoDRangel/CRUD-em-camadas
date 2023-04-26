@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/unit/**/*.test.js --exit"
   },
   "author": "Thiago Rangel",
   "license": "ISC",
@@ -16,8 +16,11 @@
     "mysql2": "^3.2.3"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
     "eslint": "6.8.0",
     "eslint-config-trybe-backend": "1.0.1",
-    "nodemon": "^2.0.22"
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
+    "sinon": "^15.0.4"
   }
 }

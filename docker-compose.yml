@@ -25,6 +25,8 @@ services:
   database:
     container_name: db_slido
     image: mysql:8.0.32
+    cpus: 0.4
+    mem_limit: 6g
     environment:
       - MYSQL_ROOT_PASSWORD=password
     ports:

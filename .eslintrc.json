@@ -9,5 +9,16 @@
       5
     ],
     "indent": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.test.js"
+      ],
+      "rules": {
+        "max-lines-per-function": 0,
+        "sonarjs/no-identical-functions": 0
+      }
+    }
+  ]
 }

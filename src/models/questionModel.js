@@ -14,7 +14,6 @@ const create = async ({ question }) => {
     'INSERT INTO questions (question) VALUES (?);',
     [question],
   );
-  console.log('mock do create', insertId);
   return { id: insertId, question };
 };
 
