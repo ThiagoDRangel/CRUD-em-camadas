@@ -1,7 +1,9 @@
 const connection = require('./connection');
 
 const getAll = async () => {
-  const [questions] = await connection.execute('SELECT * FROM questions;');
+  const [questions] = await connection.execute(
+    'SELECT id, question, user_id AS userId FROM questions;'
+  );
   return questions;
 };
 
@@ -22,7 +24,7 @@ const exclude = async (questionId) => {
 
 const isQuestionSimilar = async (question) => {
   const [questions] = await connection.execute(
-    'SELECT * FROM questions WHERE replace(lcase(question), " ", "")',
+    'SELECT * FROM questions WHERE replace(lcase(question), " ", "") = ?;',
     [question],
   );
   return questions.length > 0;
